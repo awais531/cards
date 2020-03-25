@@ -93,7 +93,7 @@ defmodule CardsWeb.RoomChannel do
         IO.inspect(game)
             Enum.map(leaves, fn {k, _v} ->
               player_ids = Enum.filter(game.player_ids, fn p_id -> p_id != String.to_integer(k) end)
-            IO.inspect(player_ids)
+              IO.inspect(player_ids)
               {:ok, game} = Cards.Games.update_game(game, %{"player_ids" => player_ids})
               broadcast!( socket, "shout", %{player_id: k, players: length(player_ids), presence: Presence.list(socket)} )
             end)
@@ -102,7 +102,7 @@ defmodule CardsWeb.RoomChannel do
 
       _ ->
 #        push(socket, "presence_diff", msg)
-        {:noreply, socket}
+          {:noreply, socket}
     end
   end
 end
